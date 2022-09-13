@@ -1,0 +1,35 @@
+<!--2022.09.07.(수)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입출력연습</title>
+</head>
+<body>
+    <h1><span id="name"></span>님 오신것을 환영합니다.</h1>
+    <p>홈페이지에 방문하신 것을 환협니다</p>
+
+    <script>
+        // 자바스크립트만 이용해서 작성
+        let nickname = prompt("닉네임을 입력해주세요");
+        document.write(`<h1>${nickname}님 오신 것을 환영합니다.</h1>`);
+        document.write("<p>홈페이지에 방문하신 것을 환영합니다</p>");
+        
+        //prompt를 통해서 값을 가져오고, 태그에 접근해서 값을 출력
+        document.querySelector("#name").innerHTML = nickname;
+
+
+        // 생년을 입력받으면 나이를 출력하는 자바스크립트
+        let year = prompt("현재 생년을 입력해주세요");
+        document.write(`<p>현재 나이는 ${2022-Number(year)+1}세 입니다</p>`);
+        /*
+        위 내용과 동일함
+        let age = 2022-Number(year)+1
+        document.write(`<p>현재 나이는 ${age}세 입니다</p>`);
+        */
+        console.log(isNaN(Number(year)));
+    </script>
+</body>
+</html>
