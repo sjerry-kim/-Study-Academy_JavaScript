@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배열과 반복문</title>
+</head>
+<body>
+    <script>
+        //배열
+        // 배열안에 다양한 자료형이 동시에 들어갈 수 있지만
+        // 하나의 자료형으로 통일해서 사용
+        let array = ["하나", "둘", "셋"];
+
+        // 배열인지 아닌지 확인하기 위해, Array.isArray, instanceof 사용
+        document.write(Array.isArray(array)? "배열입니다":"배열이 아닙니다");
+        document.write(array instanceof Array);
+
+        
+        // 반복문 : for
+        for(let i = 0; i<10; i++){
+            document.write(i);
+        }
+        // for문 안에서 let으로 선언한 변수는 for문 안에서만 사용 가능
+        // console.log(i);
+
+        // 실습1: for 반복문
+        // 10부터 1까지 카운트다운
+        for(let i = 10; i>0; i--){
+            document.write(`<h1>${i}</h1>`);
+        }
+
+        // 실습2 : for 반복문
+        // 구구단 2단
+        for(let i=1; i<=9; i++){
+            document.write(`2 X ${i} = ${2*i} <br>`);
+            //document.write(`<p>2 X ${i} = ${2*i} </p>`); -> p태그의 마진이 들어감
+        }
+    </script>
+</body>
+</html>

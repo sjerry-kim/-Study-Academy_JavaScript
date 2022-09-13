@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chap02_조건문</title>
+</head>
+<body>
+    <script>
+        if(false){
+            console.log("참");
+        }else{
+            console.log("거짓");
+        }
+
+        // 실습 1: 조건문
+        // 변수 money에 값을 할당한 후 
+        // 값이 1500보다 크면 "버스를 타고 갑니다"
+        // 거짓이면 "걸어갑니다" 출력
+        let money = 1000;
+        if(money>=1500){
+            document.write("버스를 타고 갑니다");
+        }else{
+            document.write("걸어갑니다");
+        }
+
+        // 실습 2: 조건문
+        // 변수 isCard에 값을 할당한 후 
+        // 값이 참이면 "버스를 타고 갑니다"
+        // 거짓이면 "걸어갑니다" 출력
+        let isCard = true;
+        if(isCard===true){
+            document.write("버스를 타고 갑니다");
+        }else{
+            document.write("걸어갑니다");
+        }
+
+        // 실습 3 : 조건문
+        // 미세먼지 판별
+        let dust = 50;
+        if(dust>=0&&dust<=30){
+            document.write("좋음");
+        }else if(dust>=31&&dust<=80){
+            document.write("보통");
+        }else if(dust>=81&&dust<=150){
+            document.write("나쁨");
+        }else if(dust>=151){
+            document.write("매우나쁨");
+        }
+
+        if(dust<=30){
+            document.write("좋음");
+        }else if(dust<=80){
+            document.write("보통");
+        }else if(dust<=150){
+            document.write("나쁨");
+        }else if(150<dust){
+            document.write("매우나쁨");
+        }
+
+        // 실습 4 : 조건문
+        // 구매한 가격을 입력하면 할인율이 적용된 금액 출력
+        let pay = prompt("구매한 금액을 입력하세요");
+        if(pay<10000){
+            document.write(`총 금액 : ${pay}원`)
+        }else if(pay>=10000&&pay<50000){
+            document.write(`할인 적용된 총 금액 : ${pay*0.95}원`);
+        }else if(pay>=50000&&pay<100000){
+            document.write(`할인 적용된 총 금액 : ${pay*0.9}원`);
+        }else if(pay>=100000){
+            document.write(`할인 적용된 총 금액 : ${pay*0.8}원`);
+        }
+
+        let pay2 = prompt("구매한 금액을 입력하세요");
+        if(pay2>=100000){
+            // 20%할인
+            document.write(pay2*0.8);
+        }else if(pay2>= 50000){
+            document.write(pay2*0.9);
+        }else if(pay2>=10000){
+            document.write(pay2*0.95);
+        }else{5000
+            document.write(pay2);
+        }
+    </script>
+</body>
+</html>
