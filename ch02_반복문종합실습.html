@@ -1,0 +1,24 @@
+<!--2022.09.14.(수)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문종합실습</title>
+</head>
+<body>
+    <input type=button onclick="numCheck()">
+    <script>
+        // 실습5: 종합실습
+        // 랜덤한 숫자 3개 출력
+        function numCheck(){
+            for(let i=0; i<3; i++){
+                let randomNum = Math.random()*10
+                let random = parseInt(randomNum);
+                document.write(random);
+            }
+        }
+    </script>
+</body>
+</html>

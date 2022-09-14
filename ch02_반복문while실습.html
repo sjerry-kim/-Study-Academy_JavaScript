@@ -1,0 +1,66 @@
+<!--2022.09.14.(수)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문while실습</title>
+</head>
+<body>
+    <script>
+        // 실습1 : while문
+        // 10+10?문제를 내고 정답을 맞출 때까지 반복
+        let num = prompt("10+10?");
+        while(num != 20){ // 그래도 되도록이면 ""를 사용해주는 게 좋음
+            num = prompt("10+10?");
+        }
+        alert("정답입니다");
+
+        // 0이 입력될 때까지 숫자를 다 더하는 while문
+        let number = prompt("0을 입력하면 입력한 모든 수를 더합니다");
+        let sum = 0;
+        while(number != "0"){
+            if(!isNaN(Number(number))){
+                sum +=Number(number); //prompt로 받은 값은 string이 기본값이기 때문
+            }
+            number = prompt("0을 입력하면 입력한 모든 수를 더합니다");
+        }
+        alert(sum);
+        
+        // 실습2: do while
+        // 패스워드 확인 및 시도 횟수
+        let pw='green';
+        let count=0;
+        let user;
+        do{
+            user = prompt("패스워드를 입력하세요");
+            count++;
+        }while(pw != user && count<5); // 횟수제한 추가
+        alert(`${count}회 시도하였습니다.`)
+
+        // 실습3: break
+        // 1~10까지 출력 후 반복문 빠져나오기
+        let num1 = 1;
+        while(true){
+            if(num1>10){
+                break;
+            }
+            document.write(` ${num1}`);
+            num1++;
+        }
+
+        document.write(`<br>`);
+
+        // 실습4: continue
+        // 1~10 중 3의 배수를 제외하고 출력하기
+        for(let i=1; i<=10; i++){
+            if(i%3==0){
+                continue;
+            }
+            document.write(` ${i}`);
+        }
+
+    </script>
+</body>
+</html>

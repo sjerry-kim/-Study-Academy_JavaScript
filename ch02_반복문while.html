@@ -1,0 +1,74 @@
+<!--2022.09.14.(수)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>반복문while</title>
+</head>
+<body>
+    <script>
+        //while문
+        let a = 0;
+        while(a<10){
+            document.write(a);
+            a++;
+        }
+
+        // 값을 받아와서 반복하는 while
+        let word = prompt("나무를 영어로 입력하세요");
+        while(word!=="tree"){
+            word = prompt("다시 나무를 영어로 입력하세요");
+        }
+        document.write("맞췄습니다");
+
+        // 실습1 : while문
+        // 10+10?문제를 내고 정답을 맞출 때까지 반복
+        let quiz = prompt("10+10?");
+        while(quiz!="20"){
+            quiz = prompt("10+10?");
+        }
+        document.write("정답입니다")
+
+        // do while
+        let b = 0;
+        do{
+            document.write(b);
+            b++;
+        }while(b<0);
+
+        // 값을 여러번 입력 받을 때, do while을 사용하면 한 번은 반드시 입력ㅂ다을 수 있다
+        // while 사용
+        let num = prompt("숫자를 입력하세요");
+        while(isNaN(num)){
+            num = prompt("숫자를 입력하세요");
+        }
+        alert(num);
+
+        // do while 사용
+        do{
+            num = prompt("숫자를 입력하세요")
+        }while(isNaN(num));
+
+        // break
+        let c = 0;
+        while(true){
+            document.write("무한반복중입니다");
+            c++;
+            if(c>10){
+                break;
+            }
+        }
+
+        // continue
+        for(let i=1; i<=10; i++){
+            if(i%2==1){ //홀수는 제외하고 싶을 때
+                continue;
+            }
+            document.write(`<p>${i}</p>`);
+        }
+
+    </script>
+</body>
+</html>
