@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>배열과 반복문</title>
+    <style>
+        td{border: 1px solid black};
+    </style>
 </head>
 <body>
     <script>
@@ -38,6 +41,115 @@
             document.write(`2 X ${i} = ${2*i} <br>`);
             //document.write(`<p>2 X ${i} = ${2*i} </p>`); -> p태그의 마진이 들어감
         }
+
+        // 베열과 함께 쓰는 반복문
+        // for (변수 in 배열/객체) > 변수는 배열의 인덱스값
+        let names = ['홍길동', '성춘향', '흥부']
+        document.write(`<ul>`)
+        for (index in names){
+            document.write(`<li>${index}</li>`)
+        }
+        document.write(`</ul>`)
+
+        // for (변수 of 배열/객체) > 변수는 배열의 요소값
+        document.write(`<ol>`)
+        for (name of names) {
+            document.write(`<li>${name}</li>`)
+        }
+        document.write(`</ol>`)
+
+        // 실습3: for in, for of
+        // 60잠 이상 합격, 미만 불합격
+        let scores = [50, 55, 60, 45, 80]
+        for(score in scores){
+            if(scores[score]>=60){
+                document.write(`<p>${scores[score]}점 : 합격입니다</p>`);
+            }else{
+                document.write(`<p>${scores[score]}점 : 불합격입니다</p>`);
+            }
+        }
+
+        for(score of scores){
+            if(score>=60){
+                document.write(`<p>${score}점 : 합격입니다</p>`);
+            }else{
+                document.write(`<p>${score}점 : 불합격입니다</p>`);
+            }
+        }
+
+        // 중첩 for문
+        for(let i=0; i<5; i++){
+            for(let j=0; j<5; j++){
+                document.write('(' + i + ',' + j + ')');
+            }
+            document.write(`<br>`)
+        }
+
+        // 실습4: 중첩 for
+        // 1~16를 4*4 테이블을 만들어서 넣으세요 😡😡😡
+        let number = 1;
+        document.write(`<table>`)
+            for(let i=0; i<4; i++){
+                document.write(`<tr>`)
+                    for(let j=0; j<4; j++){
+                        document.write(`<td>${number}</td>`);
+                        number++;
+                    }
+                document.write(`</tr>`)
+                }
+        document.write(`</table>`)
+
+
+        // 이중 for문을 이용해서 중첩 배열 출력하기 😡😡😡
+        let numbers =[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]
+        document.write(`<table>`)
+            for(let i=0; i<4; i++){
+                document.write(`<tr>`)
+                    for(let j=0; j<4; j++){
+                        document.write(`<td>${numbers[i][j]}</td>`);
+                        number++;
+                    }
+                document.write(`</tr>`)
+                }
+        document.write(`</table>`)
+
+        // 실습5: 중첩 for
+        // 2~9단 출력
+        for(let i=2; i<10; i++){
+            document.write(`<h2><${i}단></h2>`)
+            for(let j=1; j<10; j++){
+                document.write(`<p>${i} X ${j} = ${i*j}</p>`)
+            }
+        }
+
+        // 실습6: for문 종합
+        // 점수 배열의 평균값 구하기
+        let scores1 = [60,70,80,90,40,70,70]
+        let sum1 = 0 ;
+        for(score1 of scores1){
+            sum1 += score1;
+        }
+        document.write(`평균 : ${sum1/scores1.length}`);
+
+        // 실습7
+        // 1~100 중 홀수의 합
+        let sum2 = 0;
+        for(let i=1; i<101; i++){
+            if(i%2===1){
+                sum2+=i;
+            }
+        }
+        document.write(`<p>합계 : ${sum2}</p>`);
+
+        // 실습8
+        // 1~100 중 3의 배수, 5의 배수의 합
+        let sum3 = 0;
+        for(let i=1; i<101; i++){
+            if(i%3===0 || i%5===0){
+                sum3+=i;
+            }
+        }
+        document.write(`<p>합계 : ${sum3}</p>`);
     </script>
 </body>
 </html>
