@@ -20,6 +20,108 @@
         function introNameReturn(name){
             return`안녕하세요 ${name}입니다. 반갑습니다.`;
         }
+
+        // 실습3: 명시적 함수
+        function introNameReturnLog(name){
+            console.log("함수가 출력되었습니다");
+            return`안녕하세요 ${name}입니다. 반갑습니다`
+        }
+
+        // 실습4: 명시적 함수
+        function area(num1, num2){
+            let vol = num1*num2; // 사각형의 넓이를 구함
+            return vol; // 구한 값을 리턴
+        }
+
+        // Math.random() > 리턴을 통해서 랜덤값을 넘겨줌
+
+        // 실습5: 명시적 함수
+        function avrg(array){
+            // array가 배열이 아니라면 0값을 return하기
+            if(!Array.isArray(array)){
+                return 0; 
+                // return을 사용하면 함수가 종료
+                // 아래의 명령은 실행되지 않음
+            }
+            // 배열의 모든 값을 더하고 평균값 구하기
+            let sum = 0;
+            let count = 0;
+            for(value of array){
+                sum += value;
+                count++; // count 값을 세어서 사용할 수도 있음
+            }
+            let avg = sum/array.length;
+            return avg;
+        }
+        
+        // 동일한 이름의 함수가 있을 때 매개변수가 많은 함수만 출력됨
+        // 따라서 이름이 겹치지 않게 주의
+        function introName(name, adress){
+            document.write(`${name}입니다. ${adress}에 살고 있습니다`)
+        }
+        
+        // 실습6: 명시적 함수
+        function add(num1, num2=0){
+            if(num2==undefined){
+                num2=0;
+            }
+            let sum = num1 + num2;
+            return sum;
+        }
+
+        // 기본값 매개변수
+        // 매개변수에 기본값을 할당해서 사용할 수 있음(값이 들어오면 그 값으로 대체)
+        function add(num1=0, num2=0){
+            let sum = num1 + num2;
+            return sum;
+        }
+
+        // 나머지 매개변수
+        // 배열형태로 들어옴
+        function allString(...words){
+            for(word of words){
+                document.write(word);
+            }
+            return words;
+        }
+
+        // arguments 객체
+        // 기본값이나 나머지 매개변수를 사용하지 않을 때 사용
+        function argument(a){
+            document.write(`<p>${a}</p>`)
+            document.write(`<h3>${arguments[0]}</h3>`)
+            for(arg of arguments){
+                document.write(`<li>${arg}</li>`)
+            }
+        }
+
+        // 실습7: 명시적 함수
+        // arguments 사용
+        function addAllArg(X){
+            let sum = 0;
+            for(arg of arguments){
+                sum += arg;
+            }
+            return sum;
+        }
+
+        // 나머지 매개변수 사용
+        function addAllRest(...nums){
+            let sum = 0;
+            for(num of nums){
+                sum += num;
+            }
+            return sum;
+        }
+        
+        // 실습9 : 화살표 함수
+        let subArrow = (a, b) => a-b; // === {return a-b;}
+
+        // 함수표현식
+        let subfunc = function(a,b){
+            return a-b;
+        }
+
     </script>
 </head>
 <body>
@@ -38,8 +140,12 @@
         count(10);
 
         // 함수의 리턴값 콘솔에 출력하기
-        console.log(count(3))
+        console.log(count(3));
 
+        // 함수를 선언하기 전에 호출
+        intro();
+
+        // 함수 선언
         function intro(){
             document.write("<p>안녕하세요. 반갑습니다.</p>");
         }
@@ -54,6 +160,139 @@
         // 실습2 : 명시적 함수
         // 함수의 return값을 사용하기 위해서, 변수에 할당하거나 바로 값을 출력
         document.write(introNameReturn("아무개"));
+
+        // 실습3 : 명시적 함수
+        document.write(introNameReturnLog("홍길동"));
+        
+        // 실습4 : 명시적 함수
+        document.write(area(50,10));
+
+        // 실습5 : 명시적 함수
+        let numArray=[30, 60, 40, 60, 20]
+        document.write(avrg(numArray));
+
+        // 함수의 기본 원칙
+        // 1.초과된 인수는 무시
+        intro("홍길동")
+
+        // 2.부족한 인수는 undefined > 오류가 나지 않음
+        introName();
+
+        // 배열과 같은 인수를 넣지 않앗을 경우 type에러가 날 수 있음
+        avrg();
+
+        // 실습6: 명시적 함수
+        document.write(add(5));
+
+        argument("hi");
+
+        // 실습7: 명시적 함수
+        document.write(addAllArg(5));
+        document.write(addAllRest(5,6,7,8));
+
+        argument("hi");
+
+        // 변수에 함수를 할당해서 사용하고 있기에,
+        // 변수를 선언하지 않으면, 사용할 수 없다.
+        // printName();
+
+        // 이름없는 함수를 사용하는 방법 : 함수 표현식
+        let printName = function(name){
+            document.write(name);
+            return name;
+        }
+
+        // 변수에 할당된 함수를 호출 
+        printName("홍길동");
+
+        function printNameFunc(name){
+            document.write(name);
+            return name;
+        }
+
+        // 실습8: 함수 표현식
+        let sub = function(num1, num2){
+            let substract = num1-num2;
+            return substract;
+        }
+        document.write(sub(5,10));
+        
+        // 함수 표현식 사용 예
+        if(true){ // 정해진 공간에서만 사용하고 싶을 때...
+            let printNum = function(num){
+                document.write(`<li>${num}</li>`);
+            }
+            for(let i=0; i<10; i++){
+                printNum(i);
+            }
+        }
+        // 함수표현식으로 작성한 경우, 작성한 블록이 아닌고셍서 호출할 수 없다
+        // let 키워드의 특징
+        // printNum(12);
+
+        // 화살표 함수 : 함수 표현식을 간단하게 작성한느 방법
+        // function 대신 =>을 사용
+        // 1. 매개변수가 없고, return이 없는 함수
+        let arrowNoVar = ()=>{document.write("매개변수와 return이 없다")};
+        arrowNoVar();
+
+        // 2. 매개변수가 1개 있고, return이 없는 함수
+        let arrowOneVar = a =>{document.write(`<p>${a}</p>`)};
+        arrowOneVar("매개변수가 하나가 있다");
+
+        // 3. 매개변수가 2개 이상이고, return이 없는 함수
+        let arrowMoreVar = (a,b,c) =>{document.write(a,b,c)};
+        arrowMoreVar(1,2,3);
+
+        // 4. 실행명령이 없이 return값을 줄 때
+        // => 화살표 뒤에 블록(중괄호)없이 표현식을 적어주면 그 내용은 return값이 됨
+        let arrowReturn = (a,b) => a+b;
+        document.write(arrowReturn(1,2));
+
+        // 5. 중괄호를 이용하여 여려줄로 출력한 후 return
+        // 두줄 이상은 return을 직접 적어서 사용해야함
+        let arrowMultiReturn = (a,b) => {
+            let sum = a+b;
+            return sum;
+        }
+        document.write(arrowMultiReturn(3,5));
+
+        // 실습9: 화살표 함수
+        document.write(subArrow(5,10));
+
+        // 함수 안에 함수를 인수로 넣기
+        function funcVar(func){
+            document.write('매개변수로 받아온 함수를 실행합니다')
+            func();
+        }
+        // 함수를 인수값으로 넣어주기
+        funcVar(function(){
+            document.write("익명함수를 통해 넣어준 함수입니다")
+        })
+
+        // 실습10: 함수 종합
+        // 함수 선언
+        // confirm 확인 ✅
+        // console.log(confirm("확인"));
+        function ask(question, yes, no){
+            if(confirm(question))
+                yes(); // 받아온 함수 실행
+            else
+                no(); // 받아온 함수 실행
+        }
+        /*
+        ask(
+            "동의하십니까?",
+            function(){alert("동의하셨습니다.");},
+            function(){alert("취소 버튼을 누르셨습니다");}
+        );
+        */
+        // 위의 함수를 화살표삼후로 변경하세요
+        ask("동의하십니까",
+        () => alert("동의하셨습니다."),
+        () => alert("취소 버튼을 누르셨습니다")
+        );
+
     </script>
 </body>
 </html>
