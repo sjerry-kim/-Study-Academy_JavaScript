@@ -19,6 +19,7 @@
         }
         // document.write(i); // 블록을 벗어났으므로 사용할 수 없음
 
+        // 변수의 우선순위
         let name = "홍길동";
         if(true){
             let name = "성춘향";
@@ -28,11 +29,13 @@
         }
         document.write(name);
 
+        // 실습1 : 변수의 범위
         let maxCount=10;
         for(let checkCount=1; checkCount<=maxCount; checkCount++){
             console.log(`${maxCount}중의 ${checkCount}`);
         }
 
+        // 실습2 : 변수의 범위
         let outString = "밖에 있는 문자입니다";
         function printString(){
             let inString = "안에 있는 문자입니다";
