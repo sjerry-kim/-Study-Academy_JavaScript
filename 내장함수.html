@@ -1,0 +1,45 @@
+<!--2022.09.16.(금)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장함수</title>
+</head>
+<body>
+    <script>
+        // 내장함수 - 숫자
+
+        // 내장함수 - 타이머
+        // 특정시간마다 함수를 실행
+        // setInterval은 retrun값으로 id값을 돌려준다
+        let id = setInterval(
+            ()=>document.write(`<p>안녕하세요</p>`),
+            2000
+        )
+
+        // 특정시간에 함수를 실행
+        setTimeout(
+            // setInterval의 id값은 멈추는 데 사용된다.
+            // 콜백 함수를 넣어주어야 하기 때문에
+            // 익명함수 또는 함수의 이름을 넣어주어야 함
+            // 함수이름(); 을 하면 함수가 바로 호출되어 실행 값이 출력됨
+            ()=>clearInterval(id),
+            10000
+        )
+
+        document.write("글자를 작성하였습니다");
+
+        // 실습1: 내장함수 parseInt
+        function printYear(){
+            let age = prompt("나이를 입력하세요");
+            let intAge = parseInt(age);
+            console.log("태어난 년도는 " + (2022-intAge+1));
+        }
+        printYear();
+
+
+    </script>
+</body>
+</html>

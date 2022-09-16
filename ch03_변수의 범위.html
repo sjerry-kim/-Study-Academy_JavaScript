@@ -1,0 +1,47 @@
+<!--2022.09.16.(금)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>변수의 범위</title>
+</head>
+<body>
+    <script>
+        // 변수의 범위
+        // 전역 변수 : 다른 자바스크립트에서 접근이 가능하다
+        let globalVar = 10;
+
+        // 지역변수 : 블록/함수 안에서만 사용할 수 있는 변수
+        for(let i=0; i<10; i++){
+            document.write(`<p>${i}</p>`);
+        }
+        // document.write(i); // 블록을 벗어났으므로 사용할 수 없음
+
+        let name = "홍길동";
+        if(true){
+            let name = "성춘향";
+            // 동일한 이름의 전역변수와 지역변수가 있을 때,
+            // 가장 가까운 지역변수를 가지고 옴
+            document.write(name);
+        }
+        document.write(name);
+
+        let maxCount=10;
+        for(let checkCount=1; checkCount<=maxCount; checkCount++){
+            console.log(`${maxCount}중의 ${checkCount}`);
+        }
+
+        let outString = "밖에 있는 문자입니다";
+        function printString(){
+            let inString = "안에 있는 문자입니다";
+            document.write(outString);
+            document.write(inString);
+        }
+        printString();
+
+    </script>
+    <script src="./js/ch09_var.js"></script>
+</body>
+</html>
