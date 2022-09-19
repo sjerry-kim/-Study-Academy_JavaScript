@@ -1,0 +1,144 @@
+<!--2022.09.19.(월)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사용자 정의 객체</title>
+</head>
+<body>
+    <script>
+        // 1. 리터럴 표기를 이용한 객체의 생성
+        let puppy = {
+            // 속성
+            name : "초코",
+            // 메소드
+            eat : function(){
+                document.write("<p>밥을 먹습니다</p>")
+            },
+            run : ()=>{
+                document.write("<p>달립니다</p>")
+            }
+        }
+
+        // 실습1 : 리터럴 표기를 이용한 객체 생성
+        let person = {
+            name: "홍길동",
+            address: "부산",
+            intro: function(){
+                return `${name}입니다. ${this.address}에 거주중입니다`;
+                // 이때, 속성 앞에 아무런 지정도 해주지 않는다면 출력시 빈칸으로 출력됨
+                // JS는 호출한 공간에서 속성값을 찾기 때문임...!
+                // this.나 person.을 통해서 객체 내 속성값을 가져올 수 있음
+                // 혹은 콘솔창에서 바로 속성값을 초기화해주면 해당 값이 들어감
+            }
+        }
+
+        // 실습2 : 리터럴 표기를 이용한 객체 생성
+        let myCookie = {
+            shape : "원",
+            flavor: "초코",
+            intro : function(){
+                return `${this.shape}모양의 ${this.flavor}맛입니다`
+            }
+        }
+
+        // 2. new Object() 함수를 이용한 객체 생성
+        let tree = new Object();
+        tree.kind = "은행나무";
+        tree.light = function (){ // 객체 안에 넣어주는 것이 아니라, 속성에 접근해서 값을 넣는 것이기 때문에 :이 아닌 =을 사용
+            document.write(`<p>${tree.kind} 광합성을 합니다</p>`);
+        }
+
+        // 실습3 : new Object() 함수를 이용한 객체 생성
+        let myBook = new Object();
+        myBook.title = "어린왕자";
+        myBook.price = 6000;
+        myBook.intro = function(){
+            return `${myBook.title}입니다. ${myBook.price}원입니다.`
+        }
+        myBook.discount = function(){
+            myBook.price *= 0.9;
+        }
+
+        // 실습4: new Object() 함수를 이용한 객체 생성
+        let myWallet = new Object();
+        myWallet.owner = "홍길동";
+        myWallet.money = 10000;
+        myWallet.show = function(){
+            return `현재 ${myWallet.money}원 남았습니다.`
+        }
+        myWallet.buy = function(changes){
+            if(changes<=myWallet.money){
+                myWallet.money -= changes;
+            }else{
+                return "물건을 살 수 없습니다."
+            }
+        }
+        myWallet.input = function(moreMoney){
+            myWallet.money += moreMoney;
+        }
+
+        // 3. 생성자 함수를 통해서 객체를 작성하는 방법
+        function Dog(name, age){
+            this.name = name;
+            this.age = age;
+            this.print = function(){
+                document.write(`<p>${this.name}입니다. </p>`)
+            }
+        }
+        let myPuppy = new Dog("벡구",1) // 값을 가진 객체를 생성
+
+        // 실습5 : 생성자 함수를 통해서 객체를 작성
+        function Student(name, score){
+            this.name = name;
+            this.score = score;
+            this.study = function(){
+                this.score += 10;
+            }
+            this.showScore = function(){
+                return this.score;
+            }
+        }
+        let myStudent = new Student("홍길동", 70);
+        let yourStudent = new Student("성춘향",80);
+
+        // 실습6 : 생성자 함수를 통해서 객체를 작성
+        function BusCard(money){
+            this.money = money;
+            this.charge = function(a){
+                this.money +=a;
+            }
+            this.takeBus = function(){
+                if(this.money>=1500){
+                    this.money -= 1500;
+                }else{
+                    console.log("잔액이 부족합니다");
+                }
+            }
+            this.showMoney = function(){
+                return this.money;
+            }
+        }
+
+        let myBusCard = new BusCard(1500);
+        let yourBusCard = new BusCard(1000);
+
+        // 실습7 : 생성자 함수를 통해서 객체를 작성
+        function Messege(name,content,time){
+            this.name = name;
+            this.content = content;
+            this.time = time;
+            this.modifyMessege = function(messege){
+                this.content = messege;
+            }
+            this.showMessege = function(){
+                return `${this.name}님께서 ${this.content}를 ${this.time}에 보냈습니다`
+            }
+        }
+        let myMessege = new Messege("홍길동", "반갑습니다", "17:43");
+        let yourMessege = new Messege("성춘향", "안녕하세요", "17:45");
+    </script>
+</body>
+</html>
