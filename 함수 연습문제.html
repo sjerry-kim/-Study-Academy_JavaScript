@@ -1,0 +1,60 @@
+<!--2022.09.19.(월)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>함수 연습문제</title>
+</head>
+<body>
+    <script>
+        // 2. 표현식 함수
+        let test = function(){
+            console.log("테스트 함수입니다.");
+        }
+
+
+        // 3. 화살표식 함수
+        let add = (a,b) => a+b;
+        let messageAlert =() => alert("화살표식 함수로 바꿨습니다");
+
+
+        // 함수문제 1
+        function power(a,b=undefined){
+            if(b===undefined){
+                return a**a;
+            }else{
+                return a**b;
+            }
+        }
+        console.log(power(2));
+
+
+        // 함수문제 2
+        let multiply = function(...a){
+            let multi=1;
+            for(a of arguments){
+                multi *= a;
+            }
+            return multi;
+        }
+        console.log(multiply(1,2,3,4,5));
+
+
+        // 함수문제 3
+        function meetAt(year, month, day){
+            if(month===undefined&&day===undefined){
+                return console.log(`${year}년`);
+            }else if(day===undefined){
+                return console.log(`${year}년 ${month}월`);
+            }else if(true){
+                return console.log(`${year}/${month}/${day}`);
+            }
+        }
+        meetAt(2022);
+        meetAt(2032, 3);
+        meetAt(1987, 10, 28);
+    </script>
+</body>
+</html>
