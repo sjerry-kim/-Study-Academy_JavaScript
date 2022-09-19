@@ -11,8 +11,8 @@
     <script>
         // 2. 표현식 함수
         let test = function(){
-            console.log("테스트 함수입니다.");
-        }
+            console.log("테스트 함수입니다.")
+        };
 
 
         // 3. 화살표식 함수
@@ -21,40 +21,93 @@
 
 
         // 함수문제 1
+        // 내가 쓴 코드
         function power(a,b=undefined){
             if(b===undefined){
-                return a**a;
+                return a**2;
             }else{
                 return a**b;
             }
         }
         console.log(power(2));
 
+        // 강사님 해설
+        function power1(x,y=2){
+            // 매개변수가 1개일 때 그 수를 제곱한다.
+            // y의 default 값을 2로 설정해줌
+
+            // 매개변수가 2개 일때
+            // x를 y제곱을 한다.
+            let result = 1;
+            for(let i=0; i<y; i++){
+                result *=x;
+            }
+            return result; // 반복문을 나왔을 때 리턴해줘야 함! 
+        }
+
 
         // 함수문제 2
+        // 내가 쓴 코드
         let multiply = function(...a){
             let multi=1;
             for(a of arguments){
                 multi *= a;
             }
             return multi;
-        }
+        };
         console.log(multiply(1,2,3,4,5));
 
+        // 강사님 해설
+        let multiply1 = function(...nums){
+            let result=1;
+            for(num of nums){
+                result *=num;
+            }
+            return result;
+        };
 
         // 함수문제 3
-        function meetAt(year, month, day){
-            if(month===undefined&&day===undefined){
+        // 내가 쓴 코드
+        function meetAt(year, month, date){
+            if(month===undefined&&date===undefined){
                 return console.log(`${year}년`);
-            }else if(day===undefined){
+            }else if(date===undefined){
                 return console.log(`${year}년 ${month}월`);
             }else if(true){
-                return console.log(`${year}/${month}/${day}`);
+                return console.log(`${year}/${month}/${date}`);
             }
         }
         meetAt(2022);
         meetAt(2032, 3);
         meetAt(1987, 10, 28);
+
+        // 강사님 해설 1
+        // JS에서는 함수를 중복해서 만들어줄 수 없음 -> 받아오는 입력값에 따라서 다른 값이 출력됨
+        function meetAt1(year, month, date){
+            if(date != undefined){ // 값이 3개일 때
+                return `${year}/${month}/${date}`;
+            }
+            else if(month==undefined){ // 값이 1개일 때
+                return year+'년';
+            }
+            else{ // 값이 2개일 때
+                return  `${year}년 ${month}월`
+            }
+        }
+
+        // 강사님 해설 2 : arguments를 이용하는 방법
+        function meetAtArg(year, month, date){ // 인자값은 왼쪽에서부터 차례대로 들어옴
+            let argCount = arguments.length;
+            switch(argCount){
+                case 1:
+                    return year+'년';
+                case 2:
+                    return `${year}년 ${month}월`;
+                case 3:
+                    return `${year}/${month}/${date}`;
+                    // break; 사용하지 않은 이유 : return이 함수를 빠져나온다는 의미이기 때문에
+            }
+        }
     </script>
 </body>
 </html>
