@@ -1,0 +1,46 @@
+<!--2022.09.26.(월)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내장객체</title>
+</head>
+<body>
+    <script>
+        // 내장객체
+        // 1. Array객체
+        let numbers = [1,2,3,4,5];
+        let sliceNumber = numbers.slice(2,4);
+        console.log(sliceNumber);
+        numbers.splice(0,1); // 두 번째 값을 넣지 않으면 전체를 삭제함
+        // 원하는 위치에 있는 값을 삭제할 수 있음
+        console.log(numbers);
+
+        numbers.reverse();
+        console.log(numbers);
+
+        numbers.sort()
+        console.log(numbers);
+        
+        // for each : 배열 안에 있는 값을 콜백함수(리턴값이 void)를 통해서 반복하는 함수
+        numbers.forEach(function(item, index){
+            console.log(item)
+        });
+
+        // filter : 콜백함수의 return 값이 true면, 요소값을 return하여 새로운 배열을 만듦
+        let filterNumber = numbers.filter(function(item, index){return item>3});
+        console.log(filterNumber);
+
+        // 실습1 : Array 객체 실습
+        let NumArray = [3,6,7,2,7,3,1];
+        console.log(NumArray.sort());
+
+        let flowerArray =["튤립","장미","국화"];
+        console.log(flowerArray.pop());
+        console.log(flowerArray.pop());
+        console.log(flowerArray.pop());
+    </script>
+</body>
+</html>

@@ -139,6 +139,83 @@
         }
         let myMessege = new Messege("홍길동", "반갑습니다", "17:43");
         let yourMessege = new Messege("성춘향", "안녕하세요", "17:46");
+
+
+        // 2022.09.26.(월)
+
+        // this 키워드를 script 내에서도 사용해줄 수 있음.
+        // 콘솔에서 this를 입력해서 확인해보면, windows가 나옴...! DOM, BOM 때 다시 확인!
+        // JS에서는 this의 사용이 헷갈릴 수 있음 ->
+
+        // 실습8 : delete 연산자를 이용한 삭제 실습
+        delete myMessege.content;
+        delete myMessege.name;
+        console.log(myMessege.showMessege());
+
+        // 실습9 : for in 루프로 확인
+        for (x in yourMessege){
+            console.log(`${x} : ${yourMessege[x]}`)
+        }
+
+        for(x in myBusCard){
+            console.log(`${x} : ${myBusCard[x]}`)
+        }
+
+        // 객체를 속성으로 갖는 객체
+        let memo = {
+            title : "오늘 할일",
+            todo : {
+                morning : ["청소", "준비"],
+                afternoon :["수업"],
+                evening : ["정리", "독서"]
+            }
+        };
+
+        // 실습10 : 객체를 속성으로 갖는 객체 
+        let myMovie = {
+            title : "킹메이커",
+            time : "120",
+            rate : 8.84,
+            coment : {
+                id : "movieMaster",
+                content: "Good"}
+        };
+
+        // 사용자 객체 실습 : 동물병원 진료 카드 😡😡😡
+        function AnimalChart(name,kind,age){
+            this.name = name;
+            this.kind = kind;
+            this.age = age;
+            this.sickness = "";
+            this.condition = "";
+            this.receive = function(sickness,condition){
+                this.sickness = sickness;
+                this.condition = condition;
+            }
+            this.confirm = function(){
+                let s = "";
+                for(let x in this){ // 객체 이름을 모르기 때문에 this를 넣어줌
+                    // 함수 부분은 제외하기 위함
+                    if(typeof this[x] == "function"){
+                        continue;
+                    }
+                    s += x + ":" + this[x] + "\n";
+                }
+                return s;
+            }
+        }
+
+        let first = new AnimalChart("홍길동","강아지",1);
+        first.receive("감기","원만함");
+        first.confirm();
+        console.log(first.confirm()) // 이렇게 해야 \n이 적용됨
+        
+        let count = 0; //😡😡😡
+        let charts = [];
+        charts[count] = new AnimalChart("성춘향", "고양이", 5);
+        count ++;
+
+
     </script>
 </body>
 </html>
