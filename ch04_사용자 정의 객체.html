@@ -164,8 +164,8 @@
         // 객체를 속성으로 갖는 객체
         let memo = {
             title : "오늘 할일",
-            todo : {
-                morning : ["청소", "준비"],
+            todo : { // 리터럴 표기법의 객체가 속성으로 들어가 있음
+                morning : ["청소", "준비"],// 객체 안의 객체 속 배열이 들어가 있음
                 afternoon :["수업"],
                 evening : ["정리", "독서"]
             }
@@ -180,6 +180,8 @@
                 id : "movieMaster",
                 content: "Good"}
         };
+
+        console.log(myMovie.coment.content); // content 호출
 
         // 사용자 객체 실습 : 동물병원 진료 카드 😡😡😡
         function AnimalChart(name,kind,age){
@@ -200,6 +202,7 @@
                         continue;
                     }
                     s += x + ":" + this[x] + "\n";
+                    // 이때 \n이 제대로 적용되지 않는 이유 : return은 값 그대로를 내보내기 때문
                 }
                 return s;
             }
@@ -210,11 +213,15 @@
         first.confirm();
         console.log(first.confirm()) // 이렇게 해야 \n이 적용됨
         
-        let count = 0; //😡😡😡
+        let count = 0; //😡😡
         let charts = [];
         charts[count] = new AnimalChart("성춘향", "고양이", 5);
         count ++;
-
+        charts[count] = new AnimalChart("후추","푸들",3);
+        console.log(charts[1]);
+        count ++;
+        charts[count] = new AnimalChart("먹물","푸들",3);
+        console.log(charts[2]);
 
     </script>
 </body>
