@@ -1,0 +1,86 @@
+<!--2022.09.27.(화)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로토타입</title>
+</head>
+<body>
+    <script>
+        //프로토타입
+        // 미리 만들어둔 내용을 사용하기 위해 소것ㅇ과 메소드를 복제해서 들고오는 것
+
+        // 1. literal 객체에서 프로토타입
+        let rabbit = {
+            color : "흰색",
+            run : function(){
+                document.write("<p>달립니다</p>")
+            }
+        }
+        // literal객체의 프로토타입은 object이다.
+        // 배열의 프로토타입은 array이다.
+        // 배열에 비로 메소드가 지정되는 것이 아니라, 프로토타입에 있는 메소드를  들고온다
+
+        // 2. 사용자 지정객체를 만들기 위한 생성자 함수
+        // 만들어진 객체는 생성자 함수를 프로토타입으로 갖는다
+        function Person(name){
+            this.name = name;
+            this.intro = function(){
+                document.write(`<p>${name}입니다</p>`)
+            } 
+            // 생성자함수에 prototype을 추가
+            this.__proto__.lastName = function(){
+            return this.name.slice(1);
+        }
+        }
+
+        // 생성자 함수의 prototype에 메소드/ 속성을 추가해줄 수 있다.
+        // 위의 방법보단 보편적으로 많이 사용되는 방법임
+        Person.prototype.firstName = function(){
+            return this.name.charAt(0);
+        }
+
+        let kim = new Person("김길동");
+        let park = new Person("박길동");
+        // 객체에 들어가 있는 메소드는 객체를 생성할 때마다 만들지만
+        // prototype은 하나를 만들어두고 접근해서 사용한다.
+
+        // protype은 함수마다 하나씩 가지고 있는 것.
+        // __proto__는 객체마다 prototype에 접근하기 위해 가지고 있는 것
+        /*__proto__는 prototype 안에 있다*/
+
+        // 실습1 : prototype 
+        function Dog(name, age){
+            this.name = name;
+            this.age = age;
+            }
+        
+        // 프로토타입으로 메소드와 속성을 추가
+        // family 속성 추가 : "진돗개"
+        Dog.prototype.family = "진돗개";
+
+        // familyPrint 메소드 추가 : family 속성을 return
+        Dog.prototype.familyPrint = function(){
+            return this.family; // 객체이 있는 family로 접근하는 것이기 때문에 this를 붙여줌
+        }
+
+        let myPuppy = new Dog("마루",1);
+
+
+        // 3. getter와 setter
+        // Dog에 getter를 이용한 내용 추가하기.
+        // 이미 객체가 있을 때 객체의 getter 속성을 추가하는 방법
+        Object.defineProperty(myPuppy, "americanAge",
+        {get : function(){return this.age-1}})
+
+        // 이미 객체가 있을 때 객체의 setter 속성을 추가하는 방법
+        Object.defineProperty(myPuppy,"changeAge",
+        {set : function(n){this.age = this.age + n;}})
+
+        // getter/setter을 이용해서 속성의 갓을 한수를 통해 정해서 들거오거나 설정할 수 있음.
+
+    </script>
+</body>
+</html>
