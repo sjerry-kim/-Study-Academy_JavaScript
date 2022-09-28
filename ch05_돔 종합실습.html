@@ -1,0 +1,70 @@
+<!--2022.09.28.(수)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>돔 종합실습</title>
+</head>
+<body>
+    <!--DOM, Node 종합실습-->
+    <!--html-->
+    <main>
+        <h1 id="title">수정하기 전 제목입니다</h1>
+        <ul id="ul">
+            <li>첫번째 내용입니다</li>
+            <li>두번째 내용입니다</li>
+            <li>세번째 내용입니다</li>
+            <li>네번째 내용입니다</li>
+        </ul>
+        <ol id="ol">
+            <li>첫번째 내용입니다</li>
+            <li>두번째 내용입니다</li>
+            <li>세번째 내용입니다</li>
+            <li>네번째 내용입니다</li>
+        </ol>
+        <p id="p"><span id="span">빈 공간</span>입니다</p>
+    </main>
+    <footer id="footer"><p>푸터영역입니다</p></footer>
+
+    <!--script-->
+    <script>
+        const h1Tag = document.querySelector("#title");
+        h1Tag.textContent = "DOM 이용한 수정"
+        h1Tag.style.color = "blue";
+        // 주의사항 : setAttribute를 이용해서 값을 수정하면 style의 전체 값을 수정하게 됨 
+        // h1Tag.setAttribute("style","color:blue; background-color: lightgray")
+
+        const ulTag = document.querySelector("#ul");
+        ulTag.removeChild(ulTag.firstElementChild);
+        const newLiTag = document.createElement("li"); // 노드 생성
+        newLiTag.textContent = "새로 추가한 노드요소입니다";
+        // === newLiTag.innerHTML = "새로 추가한 노드요소입니다"
+        ulTag.append(newLiTag); // 노드 추가
+        
+        const olTag = document.querySelectorAll("#ol li");
+        olTag[0].textContent = "내용을 바꾸었습니다"
+        olTag[1].remove(olTag[1]);
+        olTag[3].remove(olTag[3]);
+
+        /*
+        // 강사님 풀이(olTag)
+        const olTAg = document.querySelectorAll("#ol");
+        // first와 last를 이용한 자식찾기
+        olTag.firstElementChild.nextElementSibling.remove();
+        // children 배열을 통한 자식찾기
+        olTag.children[2].remove();
+        olTag.firstElementChild.innerHTML = "내용을 바꾸었습니다."
+        */
+
+        const spanTag = document.querySelector("#p span")
+        spanTag.style.color = "red";
+
+        const mainTag = document.querySelector("main");
+        mainTag.appendChild(document.querySelector("#p").cloneNode(true));
+        mainTag.append(document.querySelector("#p").cloneNode(true));
+        // append, appendChild 둘 다 가능
+    </script>
+</body>
+</html>

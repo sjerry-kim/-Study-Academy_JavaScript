@@ -1,0 +1,79 @@
+<!--2022.09.28.(수)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1 id="title">처음 제목</h1>
+    <a href="#">링크</a>
+    <p class="text">클래스가 적용된 p태그</p>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <form id="form">
+        <label for="" class="name">이름</label>
+        <input type="text" id="name">
+    </form>
+
+    <script>
+        // DOM 선택 메소드
+        // document.querySelector()
+
+        // DOM 생성 메소드
+        // return을 통해서 요소를 생성, 변수에 할당해서 사용할 수 있다
+        // 생성만하고 HTML문서에 추가하지는 않는다.
+        document.createElement("h1"); 
+        
+        // DOM 요소 속성 변경
+        // 문서객체에 접근해서 속성을 바꿀 수 있다.
+        let liTag = document.querySelectorAll("li"); // 요소 선택
+        // 여러개의 요소는 배열에 들어가있음으로 한번에 접근하기 위해 for문으로 접근
+        for(let i=0; i<liTag.length; i++){
+            liTag[i].innerHTML = "요소의 내용을 한 번에 수정 " // 요소 속성 수정
+        }
+
+        // 실습1 : DOM요소 -요소(태그)
+        let pTag = document.querySelector(".text");
+        pTag.innerHTML = "클래스를 통해 수정된 내용입니다!";
+        let aTag = document.querySelector("a");
+        aTag.href = "/javascript/intro";
+        let ulTag = document.querySelector("ul");
+        ulTag.style.color="red"
+        let liTag1 = document.querySelectorAll("ul li"); // 요소 선택
+        // 여러개의 요소는 배열에 들어가있음으로 한번에 접근하기 위해 for문으로 접근
+        for(let i=0; i<liTag1.length; i++){
+            liTag[i].innerHTML = "요소의 내용을 한 번에 수정 " // 요소 속성 수정
+        }// 같은 내용 맞음
+
+        // 실습2 : DOM요소 - 요소의 속성 변경
+        let aTag2 = document.querySelector("a");
+        aTag2.href = "http://www.daum.net";
+
+        let formTag = document.querySelector("#form input");
+        formTag.disabled = true;
+
+        // 실습3 : DOM요소의 스타일 변경
+        let attribute1 = document.querySelector(".name");
+        attribute1.style.backgroundColor = "yellow";
+
+        let attribute2 = document.querySelector("#title");
+        attribute2.style.textDecoration = "line-through";
+
+        let attribute3 = document.querySelectorAll("ul li");
+        for(let i=0; i<attribute3.length; i++){
+            attribute3[i].style.color = "blue";
+        }
+
+        // Node(노드)
+
+
+
+    </script>
+</body>
+</html>
