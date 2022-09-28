@@ -1,0 +1,18 @@
+/*2022.09.28.(수)*/
+
+.header h1{
+    color: brown;
+}
+
+.header h1.on{
+    background-color: burlywood;
+}
+
+.main ul{
+    display: flex;
+    list-style: none;
+}
+
+.main ul li::after{
+    content: "|";
+}
