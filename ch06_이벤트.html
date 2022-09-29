@@ -1,0 +1,74 @@
+<!--2022.09.29.(목)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트</title>
+</head>
+<body>
+    <p onclick="alert('문자열을 클릭했어요!')">Click Me!</p>
+    
+    <!--1. html에 속성으로-->
+    <p onclick="testFunc()">사용자 함수가 실행됩니다. 클릭해주세요</p>
+    <p>
+        HTML이벤트 속성으로 이벤트핸들러 함수를 넣어줄 때,
+        "함수이름()" 형태로 넣어서 사용할 수 있다.
+        이때, 인수값을 넣어줄 때 문자열일 경우 '' 사용하여 ""가 겹치지 않게 주의! 
+    </p>
+
+    <!--input 다시 보기-->
+    <input type="text" id="text" value="입력값입니다">
+    <input type="checkbox" name="" id="checkbox" checked> 체크박스입니다
+
+    <!--실습1 : 요소의 속성으로 등록하는 방법-->
+    <p>값을 넣어주세요</p>
+    <input type="text" id="text2" onchange="putIn()"> <!--onchange : 엔터를 쳤을 때 바로 업데이트됨-->
+    <button onclick="putIn()" id="button">확인</button>
+    <p id="p"></p>
+
+    <!--실습2 : 요소의 속성으로 등록하는 방법-->
+    <input type="text" id = "text3" onfocus="changeGray()" onblur="changeWhite()">
+    <input type="submit" value="확인">
+
+
+    <script>
+        // 1. html에 속성으로
+        // 내용 : 확인하시겠습니까?
+        // confirm을 사용해서 '예'일 경우 : alert창에 '확인'을 출력 
+        // '아니오'일 경우 : '취소했습니다'를 콘솔에 출력
+        function testFunc(){
+            if(confirm("확인하시겠습니까?")){
+                return alert("확인");
+            }else{
+                return console.log("취소했습니다")
+            }
+        }
+
+        // 2. onload 이벤트
+        window.onload = function(){
+            console.log("윈도우가 로드되었습니다.")
+        }
+
+        // 실습1 : 요소의 속성으로 등록하는 방법
+        function putIn(){
+            const text = document.querySelector("#text2");
+            const pTag = document.querySelector("#p");
+            pTag.textContent = text.value;
+        } // 강사님 답안도 확인하기
+
+        // 실습2 : 요소의 속성으로 등록하는 방법
+        function changeGray(){
+            const input = document.querySelector("#text3");
+            input.style.backgroundColor = "gray";
+        }
+        function changeWhite(){
+            const input = document.querySelector("#text3");
+            input.style.backgroundColor = "white";
+        }
+
+
+    </script>
+</body>
+</html>

@@ -13,6 +13,6 @@
     list-style: none;
 }
 
-.main ul li::after{
+.main ul li::after{ /*띄어쓰지 말고 붙여서 쓰기!*/
     content: "|";
 }

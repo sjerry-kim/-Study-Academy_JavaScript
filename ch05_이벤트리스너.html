@@ -1,0 +1,49 @@
+<!--2022.09.29.(목)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트리스너</title>
+</head>
+<body>
+    <p id="text">이벤트 리스너를 통해서 값을 바꿔줍니다</p>
+    <script>
+        // 이벤트리스너를 붙여줄 DOM 객체 가져오기
+        const text = document.querySelector("#text"); // 객체를 함수 밖에서 생성했음...!
+        // 가져온 DOM 객체에 이벤트 리스너 붙이기
+        // 1. 함수 이름을 전달해서 함수 내용을 전달하기
+        // 2. 인수를 가져올 경우, 
+        // 익명함수 안에 넣어서 함수 내용을 전달하기(익명 함수로 한 번 감싸서 넣기)
+        // 만약 changeColor 함수가 한 번만 실행될 내용이라면 익명함수 안에 바로 작성해서 사용해도 됨
+        text.addEventListener("click",
+        function(){
+            changeColor("red") // 함수 호출
+        });
+
+        // 이벤트 리스너에 들어갈 함수 작성하기
+        // 함수는 어느 위치에 있어도 상관없음... 선언문이기 때문에 호이스팅 됨...?
+        function changeColor(color){
+            text.style.color = color;
+        }
+
+        // 실습1 : 이벤트 리스너 호출
+        // 백그라운드 색을 바꾸는 함수를 작성하고
+        // addEventListner()메소드를 사용하여
+        // text객체에 click이벤트로 추가하세요
+        text.addEventListener("click",changeBackground);
+        function changeBackground(){
+            // if문을 사용하여 backgroundColor가 pink일 때
+            // 다른 색으로 변경될 수 있도록 수정하기
+            if(text.style.backgroundColor == "pink"){
+                text.style.backgroundColor = "lightblue";
+            }else{
+                text.style.backgroundColor = "pink"
+            }
+
+        }
+
+    </script>
+</body>
+</html>
