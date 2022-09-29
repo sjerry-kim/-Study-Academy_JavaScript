@@ -1,0 +1,48 @@
+<!--2022.09.29.(목)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이벤트 버블링</title>
+    <style>
+        #divclick{
+            height: 100px;
+            background-color: lightcoral;
+        }
+        #pclick{
+            background-color: lightblue;
+        }
+        #spanclick{
+            background-color: lemonchiffon;
+        }
+    </style>
+</head>
+<body>
+    <h1>이벤트 버블링</h1>
+    <div id="divclick">
+        <p id="pclick">
+            <span id="spanclick">span태그</span>
+            p태그입니다
+        </p>
+        div태그입니다
+    </div>
+
+    <script>
+        document.querySelector("#divclick")
+                .addEventListener("click",print);
+        document.querySelector("#pclick")
+                .addEventListener("click",print);
+        document.querySelector("#spanclick")
+                .addEventListener("click",print);
+
+        function print(e){
+            // e.target 이벤트가  실행된 요소
+            console.log(e.target);
+            // e.
+            console.dir(e);
+        }
+    </script>
+</body>
+</html>

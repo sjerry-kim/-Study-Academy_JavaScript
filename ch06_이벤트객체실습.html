@@ -11,7 +11,13 @@
     <!--실습1-->
     <p id="text">눌러주세요</p>
 
-    
+    <!--실습2-->
+    <ol>
+        <li id="first_list">
+            <input type="checkbox" name="" id="checkbox"> 첫번째 리스트입니다.
+        </li>
+    </ol>
+
     <script>
         // 실습1
         const text = document.querySelector("#text");
@@ -27,6 +33,19 @@
                 textDOM.innerHTML = "눌러주세요";
             }
         }
+
+        // 실습2
+        // 체크박스에체크시, 글자색 변경
+        const checkbox = document.querySelector("#checkbox");
+        checkbox.addEventListener("click", changeText);
+        function changeText(e){
+            if(e.target.checked){
+                e.target.parentNode.style.color = "lightgray";
+            }else{
+                e.target.parentNode.style.color = "black";
+            }
+        }
+        
     </script>
 </body>
 </html>
