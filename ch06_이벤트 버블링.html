@@ -15,7 +15,7 @@
             background-color: lightblue;
         }
         #spanclick{
-            background-color: lemonchiffon;
+            background-color: lightgreen;
         }
     </style>
 </head>
@@ -28,20 +28,27 @@
         </p>
         div태그입니다
     </div>
+    <p>
+        div와 p, span이 !!동일한 이벤트!!를 가지고 있을 경우,
+        span태그에 이벤트가 발생했을 때, 
+        p태그와 div태그에서도 이벤트가 발생하는 현상 <br>
+        가장 아래에서 올라오면서 이벤트가실행된다고 해서 버블링이라고 한다
+    </p>
+    <p>위에서 아래로 내려오면서 실행되는 것 : 캡쳐링</p>
 
     <script>
         document.querySelector("#divclick")
-                .addEventListener("click",print);
+                .addEventListener("click",(e)=>print(e,"div"));
         document.querySelector("#pclick")
-                .addEventListener("click",print);
+                .addEventListener("click",(e)=>print(e,"p"));
         document.querySelector("#spanclick")
-                .addEventListener("click",print);
+                .addEventListener("click",(e)=>print(e,"span"));
 
-        function print(e){
+        function print(e,text){
+            e.stopPropagation(); // 이벤트전파(버블링/캡처링) 취소
             // e.target 이벤트가  실행된 요소
             console.log(e.target);
-            // e.
-            console.dir(e);
+            console.log(text);
         }
     </script>
 </body>
