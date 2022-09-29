@@ -19,19 +19,28 @@
         // 만약 changeColor 함수가 한 번만 실행될 내용이라면 익명함수 안에 바로 작성해서 사용해도 됨
         text.addEventListener("click",
         function(){
-            changeColor("red") // 함수 호출
+            let r = Math.floor(Math.random()*256); // 색을 랜덤으로 넣고 싶을 때 
+            let g = Math.floor(Math.random()*256);
+            let b = Math.floor(Math.random()*256);
+            // DOM의 속성 값은 문자열로 들어가기에
+            // ``을 이용하여 변수의 값을 가져갈 수 있도록 한다.
+            changeColor(`rgb(${r},${g},${b})`) // 함수 호출 
+            // 오류가 떴을 때!
+            // console.log("1. 이벤트실행 확인")
+            // console.log("2. 값이 제대로 들어가 있는지 확인")
         });
 
         // 이벤트 리스너에 들어갈 함수 작성하기
         // 함수는 어느 위치에 있어도 상관없음... 선언문이기 때문에 호이스팅 됨...?
         function changeColor(color){
+            // DOM의 속성값은 문자열로 들어간다.
             text.style.color = color;
         }
 
         // 실습1 : 이벤트 리스너 호출
         // 백그라운드 색을 바꾸는 함수를 작성하고
         // addEventListner()메소드를 사용하여
-        // text객체에 click이벤트로 추가하세요
+        // text객체에 click 이벤트로 추가하세요
         text.addEventListener("click",changeBackground);
         function changeBackground(){
             // if문을 사용하여 backgroundColor가 pink일 때
@@ -41,7 +50,6 @@
             }else{
                 text.style.backgroundColor = "pink"
             }
-
         }
 
     </script>
